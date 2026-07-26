@@ -1,8 +1,7 @@
-﻿# TaskBoard Lite API
+# TaskBoard Lite API
 
-This project is a learning-focused backend application created to demonstrate fundamental .NET development skills.
+This project is a learning-focused backend app created to show off fundamental .NET dev skills. TaskBoard Lite API is a small REST API for managing team projects, wrok items, comments, priorities, statuses, due dates, filtering, and optimistic concurrency.
 
-TaskBoard Lite API is a small REST API for managing team projects, work items, comments, priorities, statuses, due dates, filtering, and optimistic concurrency.
 ## Is it AI or not?
 
 <a href="https://www.youtube.com/shorts/j2MpboPLs0g?feature=share">
@@ -12,22 +11,23 @@ TaskBoard Lite API is a small REST API for managing team projects, work items, c
 ```text
 and do u wanna know?
 ```
+
 ## Implemented Functionality
 
 - Create, list, read, and delete projects.
 - Reject duplicate project codes.
-- Reject deleting a project that still has work items.
+- Reject deleting a project that still has wrok items.
 - Create, list, read, update, change status, and delete work items.
 - Filter work items by status, priority, due date, and title search.
 - Sort work items by creation date or due date, ascending or descending.
 - Paginate work item results with validation.
 - Add and list work item comments.
-- Return `ProblemDetails` for validation, not-found, conflict, and unexpected errors.
-- Use a `Version` field for optimistic concurrency on work item updates and status changes.
-- Apply EF Core migrations automatically only in `Development`.
-- Seed small development-only data only when the database is empty.
+- Return ProblemDetails for validation, not-found, conflict, and unexpected errors.
+- Use a Version field for optimistic concurrency on work item updates and status changes.
+- Apply EF Core migrations automatically only in Development.
+- Seed small dev-only data only when the db is empty.
 
-## Technology Stack
+## Tech Stack
 
 - .NET 10.0
 - C# with nullable reference types
@@ -43,24 +43,24 @@ and do u wanna know?
 The solution uses three runtime projects:
 
 - `TaskBoardLite.Domain`: entities, enums, validation rules, and status-transition rules. It has no ASP.NET Core or EF Core dependency.
-- `TaskBoardLite.Infrastructure`: EF Core `DbContext`, Fluent API configuration, migrations, SQLite setup, and development database initialization.
-- `TaskBoardLite.Api`: controllers, DTOs, explicit mapping, application services, dependency injection, HTTP behavior, and centralized exception handling.
+- `TaskBoardLite.Infrastructure`: EF Core `DbContext`, Fluent API config, migrations, SQLite setup, and dev db initialization.
+- `TaskBoardLite.Api`: controllers, DTOs, explicit mapping, app services, DI, HTTP behavior, and centralized exception handling.
 
-Controllers accept HTTP requests and delegate to services. Services orchestrate EF Core and domain objects. Domain entities enforce rules such as valid status transitions. EF Core stores the data in SQLite.
+Btw, controllers just accept HTTP requests and delegate to services. Services orchestrate EF Core and domain objects. Domain entities enforce rules like valid status transitions. EF Core stores the data in SQLite.
 
 ### Domain Rules
 
 Project rules:
 
-- `Name` is required and must be 3 to 100 characters.
-- `Code` is required, must be 2 to 20 characters, is normalized to uppercase, and is unique.
-- `Description` is optional and limited to 500 characters.
-- `CreatedAtUtc` is assigned by the application.
+- `Name` is required and must be 3 to 100 chars.
+- `Code` is required, must be 2 to 20 chars, is normalized to uppercase, and is unique.
+- `Description` is optional and limited to 500 chars.
+- `CreatedAtUtc` is assigned by the app.
 
 Work item rules:
 
-- `Title` is required and must be 3 to 150 characters.
-- `Description` is optional and limited to 2,000 characters.
+- `Title` is required and must be 3 to 150 chars.
+- `Description` is optional and limited to 2,000 chars.
 - New work items start in `Todo`.
 - Status changes must use `ChangeStatus` and follow the allowed transition table.
 - `Version` is checked and incremented for updates and status changes.
@@ -76,8 +76,8 @@ Cancelled  -> Todo
 
 Comment rules:
 
-- `AuthorName` is required and limited to 100 characters.
-- `Body` is required and limited to 1,000 characters.
+- `AuthorName` is required and limited to 100 chars.
+- `Body` is required and limited to 1,000 chars.
 
 ## Database Schema Overview
 
@@ -94,7 +94,7 @@ Indexes and constraints:
 - Foreign key from `WorkItemComments.WorkItemId` to `WorkItems.Id`.
 - Indexes on `WorkItems.ProjectId`, `Status`, `Priority`, and a composite filtering index.
 
-`DateTimeOffset` values are stored as UTC ticks so SQLite can sort and filter them reliably.
+`DateTimeOffset` values are stored as UTC ticks so SQLite can sort and filter them reliably. Btw, this avoids a lot of timezone headaches.
 
 ## Run On Windows PowerShell
 
@@ -121,7 +121,7 @@ http://localhost:5xxx/openapi/v1.json
 
 ## Create Or Update The Database
 
-Development startup applies migrations automatically. To apply migrations manually:
+Dev startup applies migrations automatically. If u wanna apply migrations manually:
 
 ```powershell
 cd C:\Users\mukha\Documents\Codex\2026-07-26\files-mentioned-by-the-user-you\outputs\TaskBoardLite
@@ -258,31 +258,31 @@ Expected response: `204 No Content`.
 
 ## Design Decisions
 
-- Controllers are used because they are easy to explain in an interview.
-- DTOs are used so EF Core entities are not exposed directly.
-- EF Core is used directly in services instead of a generic repository.
+- Controllers are used cuz theyre easy to explain in an interview.
+- DTOs are used so EF Core entities aren't exposed directly.
+- EF Core is used directly in services instead of a generic repo.
 - Status transition rules live in the domain entity.
-- SQLite is used so the app runs locally without Docker or a separate database server.
-- Optimistic concurrency is implemented with an integer `Version` because SQLite does not have SQL Server-style rowversion.
+- SQLite is used so the app runs locally without Docker or a seperate db server.
+- Optimistic concurrency is implemented with an integer `Version` cuz SQLite doesn't have SQL Server-style rowversion.
 
 ## Known Limitations
 
-- No real authentication or authorization.
+- No real auth or authorization.
 - No user accounts.
-- No production secret storage.
+- No prod secret storage.
 - No rate limiting.
 - No monitoring or tracing setup beyond normal logging.
 - No distributed cache.
-- No deployment infrastructure.
-- OpenAPI is exposed as JSON; a Swagger UI package is not included because the available ASP.NET Core OpenAPI dependency chain raised NuGet audit warnings in this environment.
+- No deployment infra.
+- OpenAPI is exposed as JSON; a Swagger UI package isn't included cuz the available ASP.NET Core OpenAPI dependency chain raised NuGet audit warnings in this enviroment.
 
 ## Future Improvements
 
-- Add authentication and per-user authorization.
+- Add auth and per-user authorization.
 - Add richer project update endpoints.
 - Add assigned users after user accounts exist.
 - Add more filtering options after real usage patterns are known.
-- Add deployment configuration when there is a real target environment.
+- Add deployment config when there's a real target env.
 
 ## Exact Verification Status
 
@@ -292,7 +292,7 @@ Verified locally on .NET SDK `10.0.301`:
 - `dotnet build --configuration Release`: passed with zero warnings.
 - `dotnet test --configuration Release`: passed with 23 unit tests and 10 integration tests.
 - API startup: verified locally.
-- Manual HTTP checks: project creation, duplicate project rejection, work-item creation, filtering, valid status transition, invalid status transition, optimistic concurrency conflict, comment creation, and project deletion conflict were verified locally.
+- Manual HTTP checks: project creation, duplicate project rejection, wrok-item creation, filtering, valid status transition, invalid status transition, optimistic concurrency conflict, comment creation, and project deletion conflict were verified locally.
 
-  - ## 67 just for fun
+## 67 just for fun
 <img src="https://ih1.redbubble.net/image.5974672047.1983/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg">
