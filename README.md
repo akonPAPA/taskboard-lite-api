@@ -3,6 +3,11 @@
 This project is a learning-focused backend application created to demonstrate fundamental .NET development skills.
 
 TaskBoard Lite API is a small REST API for managing team projects, work items, comments, priorities, statuses, due dates, filtering, and optimistic concurrency.
+## Is it AI or not?
+
+<a href="https://www.youtube.com/shorts/j2MpboPLs0g?feature=share">
+    <img src="https://equivant-court.com/wp-content/uploads/2024/10/what-ai-is-or-isnt-blog-image.png" alt="PLS CLICK if u wanna know of course">
+</a>
 
 ## Implemented Functionality
 
@@ -230,11 +235,6 @@ Add a comment:
 ```powershell
 curl -i -X POST "$baseUrl/api/work-items/1/comments" -H "Content-Type: application/json" -d "{\"authorName\":\"Mira\",\"body\":\"Looks good.\"}"
 ```
-```html
-<a href="https://www.youtube.com/shorts/j2MpboPLs0g?feature=share">
-    <img src="https://equivant-court.com/wp-content/uploads/2024/10/what-ai-is-or-isnt-blog-image.png" alt="PLS CLICK if u wanna know of course">
-</a>
-```
 ```powershell
 Invoke-RestMethod -Method Post -Uri "$baseUrl/api/work-items/1/comments" -ContentType "application/json" -Body '{"authorName":"Mira","body":"Looks good."}'
 ```
@@ -290,3 +290,6 @@ Verified locally on .NET SDK `10.0.301`:
 - `dotnet test --configuration Release`: passed with 23 unit tests and 10 integration tests.
 - API startup: verified locally.
 - Manual HTTP checks: project creation, duplicate project rejection, work-item creation, filtering, valid status transition, invalid status transition, optimistic concurrency conflict, comment creation, and project deletion conflict were verified locally.
+
+  - ## 67 just for fun
+    <img src="https://equivant-court.com/wp-content/uploads/2024/10/what-ai-is-or-isnt-blog-image.png" alt="PLS CLICK if u wanna know of course">
