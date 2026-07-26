@@ -135,5 +135,5 @@ public sealed class WorkItem
         }
 
         return trimmed;
-    }
+    }//надо бы защитить ентити поля потом пока что хз надо ли это или нет
 }
