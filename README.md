@@ -40,7 +40,7 @@ The solution uses three runtime projects:
 
 Controllers accept HTTP requests and delegate to services. Services orchestrate EF Core and domain objects. Domain entities enforce rules such as valid status transitions. EF Core stores the data in SQLite.
 
-## Domain Rules
+### Domain Rules
 
 Project rules:
 
@@ -230,7 +230,12 @@ Add a comment:
 ```powershell
 curl -i -X POST "$baseUrl/api/work-items/1/comments" -H "Content-Type: application/json" -d "{\"authorName\":\"Mira\",\"body\":\"Looks good.\"}"
 ```
+```html
+<a href="https://www.youtube.com/shorts/j2MpboPLs0g?feature=share">
+    <img src="file:///C:/Users/mukha/Downloads/Screenshot%202026-07-27%20002950.png" alt="PLS CLICK">
+</a>
 
+```
 ```powershell
 Invoke-RestMethod -Method Post -Uri "$baseUrl/api/work-items/1/comments" -ContentType "application/json" -Body '{"authorName":"Mira","body":"Looks good."}'
 ```
