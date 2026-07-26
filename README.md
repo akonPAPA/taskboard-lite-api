@@ -2,15 +2,11 @@
 
 This project is a learning-focused backend app created to show off fundamental .NET dev skills. TaskBoard Lite API is a small REST API for managing team projects, wrok items, comments, priorities, statuses, due dates, filtering, and optimistic concurrency.
 
-## Is it AI or not?
 
 <a href="https://www.youtube.com/shorts/j2MpboPLs0g?feature=share">
-    <img src="https://equivant-court.com/wp-content/uploads/2024/10/what-ai-is-or-isnt-blog-image.png" alt="u really checking my code lines ? LOL">
+    <img src="" alt="u really checking my code lines ? LOL">
 </a>
 
-```text
-and do u wanna know?
-```
 
 ## Implemented Functionality
 
@@ -294,5 +290,3 @@ Verified locally on .NET SDK `10.0.301`:
 - API startup: verified locally.
 - Manual HTTP checks: project creation, duplicate project rejection, wrok-item creation, filtering, valid status transition, invalid status transition, optimistic concurrency conflict, comment creation, and project deletion conflict were verified locally.
 
-## 67 just for fun
-<img src="https://ih1.redbubble.net/image.5974672047.1983/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg">
