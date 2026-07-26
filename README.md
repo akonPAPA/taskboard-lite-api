@@ -4,7 +4,7 @@ This project is a learning-focused backend app created to show off fundamental .
 
 
 <a href="https://www.youtube.com/shorts/j2MpboPLs0g?feature=share">
-    <img src="" alt="u really checking my code lines ? LOL">
+    <img src="" alt="click to see the problem">
 </a>
 
 
