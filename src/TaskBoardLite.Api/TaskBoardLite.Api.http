@@ -1,0 +1,41 @@
+﻿@TaskBoardLite.Api_HostAddress = http://localhost:5117
+
+POST {{TaskBoardLite.Api_HostAddress}}/api/projects
+Content-Type: application/json
+
+{
+  "name": "Task Board",
+  "code": "tb",
+  "description": "Local API check"
+}
+
+###
+
+GET {{TaskBoardLite.Api_HostAddress}}/api/projects
+Accept: application/json
+
+###
+
+POST {{TaskBoardLite.Api_HostAddress}}/api/projects/1/work-items
+Content-Type: application/json
+
+{
+  "title": "Build endpoint",
+  "priority": "High",
+  "dueDateUtc": "2026-08-15T00:00:00Z"
+}
+
+###
+
+GET {{TaskBoardLite.Api_HostAddress}}/api/projects/1/work-items?status=Todo&page=1&pageSize=20&sortBy=createdAt&sortDirection=desc
+Accept: application/json
+
+###
+
+PATCH {{TaskBoardLite.Api_HostAddress}}/api/work-items/1/status
+Content-Type: application/json
+
+{
+  "status": "InProgress",
+  "version": 1
+}
