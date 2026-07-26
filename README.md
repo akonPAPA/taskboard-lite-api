@@ -6,9 +6,12 @@ TaskBoard Lite API is a small REST API for managing team projects, work items, c
 ## Is it AI or not?
 
 <a href="https://www.youtube.com/shorts/j2MpboPLs0g?feature=share">
-    <img src="https://equivant-court.com/wp-content/uploads/2024/10/what-ai-is-or-isnt-blog-image.png" alt="PLS CLICK if u wanna know of course">
+    <img src="https://equivant-court.com/wp-content/uploads/2024/10/what-ai-is-or-isnt-blog-image.png" alt="u really checking my code lines ? LOL">
 </a>
 
+```text
+and do u wanna know?
+```
 ## Implemented Functionality
 
 - Create, list, read, and delete projects.
