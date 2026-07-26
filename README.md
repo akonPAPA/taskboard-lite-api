@@ -232,9 +232,8 @@ curl -i -X POST "$baseUrl/api/work-items/1/comments" -H "Content-Type: applicati
 ```
 ```html
 <a href="https://www.youtube.com/shorts/j2MpboPLs0g?feature=share">
-    <img src="file:///C:/Users/mukha/Downloads/Screenshot%202026-07-27%20002950.png" alt="PLS CLICK">
+    <img src="https://equivant-court.com/wp-content/uploads/2024/10/what-ai-is-or-isnt-blog-image.png" alt="PLS CLICK if u wanna know of course">
 </a>
-
 ```
 ```powershell
 Invoke-RestMethod -Method Post -Uri "$baseUrl/api/work-items/1/comments" -ContentType "application/json" -Body '{"authorName":"Mira","body":"Looks good."}'
